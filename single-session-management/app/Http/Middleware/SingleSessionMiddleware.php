@@ -24,8 +24,7 @@ class SingleSessionMiddleware
         
             $sessionKey = 'user_session_' . $userId;
             // Check if the user has an active session elsewhere
-            // Revoke all tokens for the user
-           
+            
             if ($activeSession = cache($sessionKey)) {
                 //remove sanctum tokens
                 DB::table('personal_access_tokens')->where('tokenable_id', $userId)->delete();
